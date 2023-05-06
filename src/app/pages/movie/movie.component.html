@@ -1,0 +1,25 @@
+<div>
+    <div class="div-blanco"></div>
+    <div class="contenedor-pelicula" style="background:linear-gradient(0deg,#210f5dad,rgba(0,0,255,0.3)), url('{{url_backdrop_img}}')">
+        <div class="d-flex container">    <!--el profe usa un container despues el d-flex-->
+            <div class="poster-pelicula" style="background-image: url('{{url_poster_img}}')"></div>
+            <div class="contenido-pelicula">
+                <div *ngIf="movie" class="text-white">
+                    <h2>{{movie.title}} ({{movie.release_date | date:"YYYY"}})</h2> 
+                    <p>{{movie.release_date | date:"dd/MM/YY"}} ({{movie.production_countries[0].iso_3166_1}}) | {{generos}} </p>
+                    <p class="fst-italic">{{movie.tagline}}</p>
+                    <h4>Resumen</h4>
+                    <p>{{movie.overview}}</p>
+
+                    <div class="d-flex justify-content-between flex-wrap">
+                        <div *ngFor="let item of crews" style="min-width: 200px;">
+                            <h5>{{item.name}}</h5>
+                            <p>{{item.job}}</p>
+                        </div> 
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

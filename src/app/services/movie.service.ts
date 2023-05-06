@@ -1,5 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+
+const url = environment.URL;
+const api_key = environment.API_KEY;
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +15,19 @@ export class MovieService {
   constructor(private http:HttpClient) { }
 
   getTrending(){
-    return this.http.get('https://api.themoviedb.org/3/trending/movie/week?api_key=6731f8a3396a5ac8d2ad12e4f9447c84&language=es');
+    return this.http.get(`${url}/trending/movie/week?api_key=${api_key}&language=es`);
+  }
+
+  getMovieDetail(movieId:number){
+    return this.http.get(`${url}/movie/${movieId}?api_key=${api_key}&language=es`); //el profe no puso ese ;//
+  }
+
+  getMovieCredits(movieId:number){
+    return this.http.get(`${url}/movie${movieId}/credits?api_key=${api_key}&language=es`)
+
+
 
   }
+
+
 }
